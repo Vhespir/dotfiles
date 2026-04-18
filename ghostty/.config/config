@@ -1,0 +1,8 @@
+font-family = FiraCode Nerd Font
+font-size = 13
+font-feature = +liga
+font-feature = +calt
+theme = Catppuccin Mocha
+cursor-style = bar
+cursor-style-blink = true
+window-decoration = false
