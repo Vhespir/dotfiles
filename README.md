@@ -1,46 +1,48 @@
-# Wraith Dotfiles
+# Wraith — Dotfiles
 
-Personal dotfiles for Wraith — a hardened Arch Linux security workstation.
+My personal workstation. Arch Linux, Hyprland, Catppuccin Mocha. Part of a larger homelab running security tooling and a pen testing lab.
 
-## Philosophy
-Built from scratch with three goals: ultimate rice, security hardening, and productivity.
-Every component was deliberately chosen. Nothing installed by habit.
+---
 
 ## System
-- **OS:** Arch Linux
-- **WM:** Hyprland
-- **Terminal:** Ghostty
-- **Shell:** Zsh + Zinit
-- **Prompt:** Starship
-- **Editor:** Neovim (LazyVim)
-- **Bar:** Waybar
-- **Launcher:** Rofi
-- **Notifications:** Swaync
-- **Theme:** Catppuccin Mocha (Teal accent)
-- **Font:** FiraCode Nerd Font
+
+| Component | |
+|---|---|
+| OS | Arch Linux |
+| Window Manager | Hyprland (Wayland) |
+| Terminal | Ghostty |
+| Shell | Zsh + Zinit |
+| Prompt | Starship |
+| Editor | Neovim (LazyVim) |
+| Bar | Waybar |
+| Launcher | Rofi |
+| Theme | Catppuccin Mocha, teal accent |
+| Font | FiraCode Nerd Font |
+
+---
 
 ## Security
-- nftables firewall
-- AppArmor — 161 profiles
-- Auditd system logging
-- Kernel hardening via sysctl
-- Yubikey 5C NFC — sudo, SSH, SDDM, lockscreen
-- Fail2ban
-- SSH on non-standard port, key only auth
-- Tailscale mesh network
 
-## Install
-```bash
-git clone https://github.com/vhespir/dotfiles ~/.dotfiles
-cd ~/.dotfiles
-stow hypr waybar ghostty rofi starship zsh nvim
-```
+- **Firewall** — nftables, default-drop input and forward policy
+- **Kernel hardening** — sysctl: kptr_restrict, dmesg_restrict, ptrace_scope=2, kexec disabled, SysRq disabled, ASLR=2
+- **AppArmor** — enforcing, 161 profiles
+- **YubiKey** — required for sudo, SSH, PAM, and hyprlock. Two keys: daily carry + offline backup
+- **SSH** — pubkey only, root login disabled, AllowUsers set, Fail2ban enabled
+- **IDS / NSM** — Suricata and Zeek on the lab network interface
+- **Audit logging** — auditd
+
+---
 
 ## Structure
-- `hypr/` — Hyprland, hypridle, hyprlock configs
-- `waybar/` — bar config and CSS
-- `ghostty/` — terminal config
-- `rofi/` — launcher config and Catppuccin theme
-- `starship/` — prompt config
-- `zsh/` — zshrc
-- `nvim/` — Neovim/LazyVim config
+
+```
+.dotfiles/
+├── ghostty/    # Terminal
+├── hypr/       # Hyprland, hypridle, hyprlock
+├── nvim/       # Neovim + LazyVim
+├── rofi/       # Launcher + Catppuccin theme
+├── starship/   # Prompt
+├── tmux/       # Tmux + Catppuccin theme
+├── waybar/     # Bar config and CSS
+└── zsh/        # .zshrc, Zinit plugins
+```
