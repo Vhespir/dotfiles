@@ -13,6 +13,7 @@
     ],
 
     "modules-right": [
+        "custom/spotify",
         "network",
         "pulseaudio",
         "cpu",
@@ -31,9 +32,9 @@
     },
 
     "clock": {
-    "format": "󰥔  {:%I:%M %p}",
-    "format-alt": "󰃭  {:%A, %B %d %Y}",
+    "format": "󰥔   {:%Y-%m-%d %A %T}",
     "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+    "interval": 1,
     "calendar": {
         "mode": "month",
         "on-scroll": 1,
@@ -51,6 +52,16 @@
         "on-scroll-up": "shift_up",
         "on-scroll-down": "shift_down"
     }
+},
+
+    "custom/spotify": {
+    "exec": "playerctl metadata --format '{{artist}} - {{title}}' 2>/dev/null",
+    "interval": 2,
+    "format": "<span color='#94e2d5'>󰓇 </span><span color='#a6adc8'>{}</span>",
+    "max-length": 50,
+    "on-click": "playerctl play-pause",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous"
 },
 
     "cpu": {

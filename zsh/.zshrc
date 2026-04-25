@@ -23,3 +23,23 @@ zinit light zsh-users/zsh-history-substring-search
 
 # Starship prompt
 eval "$(starship init zsh)"
+
+# Zoxide — smarter cd
+eval "$(zoxide init zsh)"
+alias cd="z"
+
+# Eza — modern ls
+alias ls="eza --icons --group-directories-first"
+alias ll="eza -la --icons --group-directories-first"
+alias lt="eza --tree --icons --level=2"
+
+# Bat — modern cat
+alias cat="bat --style=auto"
+
+# Fzf
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+export FZF_DEFAULT_OPTS="--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8,fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc,marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+
+# Btop alias
+alias top="btop"
